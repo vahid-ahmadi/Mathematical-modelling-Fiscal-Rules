@@ -1,0 +1,1 @@
+This repository contains the code for replicating the mathematical model presented in the paper "Fiscal Rules and Market Discipline (Ethan Ilzetzki & Heidi Christina Thysen)". The implementation follows the methodologies and algorithms described in the paper to ensure accurate reproduction of the results.
