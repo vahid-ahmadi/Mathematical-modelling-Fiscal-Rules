@@ -1,0 +1,253 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{textgreek}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{afterpage}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{lastpage}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage{diagbox}
+ \usepackage[bottom]{footmisc}
+\usepackage[labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{comment}
+\usepackage{lscape}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage[authoryear]{natbib}
+%\bibliographystyle{apalike}
+%\setcitestyle{notesep={: },round,aysep={},yysep={;}} 
+\bibliographystyle{apalike}
+\setcitestyle{authoryear,open={(},close={)}} %Citation-related commands
+\usepackage{multibib}
+
+\begin{document}
+
+
+\section{Problem Setup}
+
+Governments value public good provision in $g_t$ in periods $t = 1,2,3$ according to an objective function
+\[
+u(g_1^\tau) + \beta u(g_2^\tau) + (\beta^2) u(g_3^\tau),
+\]
+where $\tau \in \{P, E\}$ represents type. Governments face budget constraints
+\[
+\begin{aligned}
+g_1^\tau &\leq y_1 + q^\tau b^\tau \\
+g_2^\tau + b^\tau &\leq y_2, \quad \text{and } g_3^\tau \leq y_3 \text{ if repayment, and} \\
+g_2^\tau &> y_2, \quad \text{and } g_3^\tau \leq \gamma y_3 \text{ without repayment}
+\end{aligned}
+\]
+where $y_t$ is government income or revenue in period $t$, which we take as exogenous, $b$ is borrowing, $q$ is the gross bond price, and $\gamma$ is the slow down to the economy associated with being excluded from markets. We assume that $y_2 \sim U[\underline{y}, \bar{y}]$.
+
+The government's repayment choice in period 2 boils down to a cut off strategy in which the government repay the debt $b$ iff $y_2 \geq y^\tau(b)$, where $y^\tau(b)$ is implicitly defined by
+\[
+u(\gamma y^\tau(b)) - u(\gamma y^\tau(b) - b) = \beta^\tau \Psi,
+\]
+where $\Psi = u(y_3) - u(\gamma y_3)$. If $\beta$ is observable the government simply receives the bond price
+
+$$ q^\tau(b) =\frac{1}{R} \frac{\bar{y} - y^\tau(b)}{\bar{y} - \underline{y}} 
+$$ 
+
+\section{Assumptions}
+
+We assume that the government has a log utility function as follows: $u(y) = \text{ln}(y)$. Then, $y^\tau(b)$ is implicitly defined by
+$$
+u(\gamma y^\tau(b)) - u(y^\tau(b) - b) = \beta^\tau \Psi \rightarrow \text{ln}(\frac{\gamma y^\tau(b)}{y^\tau(b) - b}) = \beta^\tau \Psi \rightarrow  y^\tau(b) = \frac{b}{1 - \gamma e^{- \beta^\tau \Psi}}
+$$
+
+If the government chooses the amount of borrowing $b$, we can uniquely identify $y^\tau(b)$ that shows the indifferent situation between defaulting and not defaulting. 
+Moreover, the government and all lenders have the same information about $y_1$, $y_3$, $\bar{y}$, $\underline{y}$, $\gamma$, $R$, and $\beta$. In the following parts, $y^\tau(b)$ means the government's income that makes it indifferent between defaulting and not defaulting. 
+
+\section{Case 1: If They Lend, Gov Never Defaults ($y^\tau(b) < \underline{y}$)}
+
+This scenario happens when borrowing $b$ is less than the borrowing amount corresponding to when $y^\tau(b)$ is equal to $\underline{y}$. In this case, the bond price is $ q^\tau(b) =\frac{1}{R}$, and the government's utility function is as follows
+
+$$
+\text{U} = u(y_1 + q^\tau(b)b) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{\underline{y}}^{\bar{y}} \left[ u(y_2 - b) + \beta^\tau u(y_3) \right] dy_2
+$$
+ 
+
+
+\section{Case 2: Gov Sometimes Defaults ($\bar{y} > y^\tau(b) > \underline{y}$)}
+
+In this scenario, the indifferent government income $y^\tau(b)$ is somewhere between $\bar{y}$ and $\underline{y}$. We can calculate the range of borrowing $b$ corresponding to this situation. Also, the bond price is $ q^\tau(b) =\frac{1}{R} \frac{\bar{y} - y^\tau(b)}{\bar{y} - \underline{y}}$, and the government's utility function is as follows
+
+$$
+\text{U} = u(y_1 + q^\tau(b)b) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{y^\tau(b)}^{\bar{y}} \left[ u(y_2 - b) + \beta^\tau u(y_3) \right] dy_2 + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{\underline{y}}^{y^\tau(b)} \left[ u(\gamma y_2) + \beta^\tau u(\gamma y_3) \right] dy_2
+$$
+
+\section{Case 3: If They Lend, Gov Always Defaults ($\bar{y} < y^\tau(b)$)}
+
+This scenario happens when borrowing $b$ is greater than the amount of borrowing corresponding to when $y^\tau(b)$ is equal to $\bar{y}$. In this case, the bond price is $ q^\tau(b) =0$ (anybody knows that if she lends anything, the government will default for sure), and the government's utility function is as follows
+
+$$
+\text{U} = u(y_1) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{\underline{y}}^{\bar{y}} \left[ u(\gamma y_2) + \beta^\tau u(\gamma y_3) \right] dy_2
+$$
+
+$\gamma$ remains because the government is excluded from markets.
+
+\section{Simulation}
+
+These are the initial conditions: $y_1 = 1.1$, $y_3 = 1.3$, $\bar{y} = 1.3$, $\underline{y} = 1$, $\gamma = 0.8$, $R = 1$, and $\beta = 0.9$. Figure \ref{fig:Simulation1} shows the results for the range of $b$ between $0$ and $1.5$. The figure's intuitions are as follows:
+\begin{enumerate}
+    \item Bond price ($q^\tau$): In case 1 (blue area), the price equals $1/R$ because they are sure the government will not default. In case 2 (red area), the bond price increases when the government borrows more. In case 3 (yellow area), the price equals $0$ because they are sure the government will default if they buy any bond.
+    \item The government's income in indifferent situation ($y^\tau$): The scenario that $y^\tau$ is in between $\bar{y}$ and $\underline{y}$ corresponds to case 2. Otherwise, we have never defaulted or always defaulted cases. In red area, $y^\tau$ equals to $ b/(1 - \gamma e^{- \beta^\tau \Psi})$. It implies that when the government borrows more, on much higher incomes the government will be indifferent to defaulting and not defaulting. 
+    \item Utility in period 1: In the blue area, the utility of the first period is $u(y_1 + b/R)$ (increasing with $b$). In the red area, the price is set endogenously. The borrowing revenue ($q^\tau b$) decreases by a higher $b$. Then, the utility of the first period ($u(y_1 + q^\tau b)$) is increasing. In the yellow area, the utility of the first period is $u(y_1)$ (by chance $u(y_1)$ is 0 because I choose $y_1 = 0$). 
+    \item Utility in period 2: In the blue area, because the government never defaults and has to repay, the utility decreases with the borrowing it had in the first period. In the red area, the government benefits from higher borrowing because the probability of defaulting increases. In the yellow area, it has nothing to repay, otherwise it decides to default. So, the utility in this area is constant with increasing borrowing.
+    \item Utility in period 3: In blue and yellow areas the utility does not depend on $b$ and it is $u(y_3)$. Because in the blue area, the government surely repaid borrowings in period two. In the yellow area, no one lent to the government in period 1, and there was nothing to repay in period 2. But in the red area, with higher borrowing $b$, the probability of defaulting in period 2 increases, and its utility in period 3 falls. 
+    \item Total utility: We expect that the total utility in the yellow area is constant over $b$ because anybody knows that the government does not repay any $b$ in period 2, consequently the bond price is $0$. But for the red and blue areas, the total utility function's maximum point may be located in the red area or blue area, depending on the initial conditions. You can check the total utility for different initial conditions in the following figures. Each time, we only change one parameter and the others are fixed. 
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=1\textwidth]{pic/case2 (3).png}}
+\caption{Simulation plots}
+\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=1\textwidth]{pic/y3 (1).png}}
+\caption{Total utility for different $y_3$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=1\textwidth]{pic/y1 (1).png}}
+\caption{Total utility for different $y_1$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=1\textwidth]{pic/gamma (3).png}}
+\caption{Total utility for different $\gamma$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=1\textwidth]{pic/beta (1).png}}
+\caption{Total utility for different $\beta$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=1\textwidth]{pic/r (3).png}}
+\caption{Total utility for different $R$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=1\textwidth]{pic/y_bar (2).png}}
+\caption{Total utility for different $\Bar{y}$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+{\includegraphics[width=1\textwidth]{pic/y_underline (2).png}}
+\caption{Total utility for different $\underline{y}$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\newpage
+\section*{Appendix}
+
+\subsection*{The Utility Function in Case 2}
+
+$$
+\text{U} = u(y_1 + q^\tau(b)b) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{y^\tau(b)}^{\bar{y}} \left[ u(y_2 - b) + \beta^\tau u(y_3) \right] dy_2 + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{\underline{y}}^{y^\tau(b)} \left[ u(\gamma y_2) + \beta^\tau u(\gamma y_3) \right] dy_2
+$$
+
+$$
+\rightarrow \text{U} = \text{ln}(y_1 + q^\tau(b)b) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{y^\tau(b)}^{\bar{y}} \left[ \text{ln}(y_2 - b) + \beta^\tau \text{ln}(y_3) \right] dy_2 + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{\underline{y}}^{y^\tau(b)} \left[ \text{ln}(\gamma y_2) + \beta^\tau \text{ln}(\gamma y_3) \right] dy_2
+$$
+
+\begin{align*}
+     \rightarrow \text{U} &=  \text{ln}(y_1 + q^\tau(b)b) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{y^\tau(b)}^{\bar{y}} \text{ln}(y_2 - b)dy_2 + \frac{{\beta^\tau}^2}{\bar{y} - \underline{y}} \int_{y^\tau(b)}^{\bar{y}} \text{ln}(y_3) dy_2 \\
+    & + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{\underline{y}}^{y^\tau(b)} \text{ln}(\gamma y_2) dy_2 + \frac{{\beta^\tau}^2}{\bar{y} - \underline{y}} \int_{\underline{y}}^{y^\tau(b)} \text{ln}(\gamma y_3) dy_2
+\end{align*}
+
+\begin{align*}
+     \rightarrow \text{U} &=  \text{ln}(y_1 + q^\tau(b)b) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{y^\tau(b)}^{\bar{y}} \text{ln}(y_2 - b)dy_2 + \frac{{\beta^\tau}^2}{\bar{y} - \underline{y}} \text{ln}(y_3) (\bar{y} - y^\tau(b)) \\
+    & + \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{\underline{y}}^{y^\tau(b)} \text{ln}(\gamma y_2) dy_2 + \frac{{\beta^\tau}^2}{\bar{y} - \underline{y}} \text{ln}(\gamma y_3) (y^\tau(b) - \underline{y})
+\end{align*}
+
+Calculating integrals:
+
+$$
+\int_{y^\tau(b)}^{\bar{y}} \text{ln}(y_2 - b)dy_2 = (\bar{y} - b) \text{ln}(\bar{y} - b) - (y^\tau(b) - b) \text{ln}(y^\tau(b) - b) - (\bar{y} - y^\tau(b))
+$$
+
+$$
+\int_{\underline{y}}^{y^\tau(b)} \text{ln}(\gamma y_2) dy_2 = y^\tau(b) \text{ln}(\gamma y^\tau(b)) - \underline{y} \text{ln}(\gamma \underline{y}) - (y^\tau(b) - \underline{y})
+$$
+
+
+\begin{align*}
+     \rightarrow \text{U} &=  \text{ln}(y_1 + q^\tau(b)b) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \left[(\bar{y} - b) \text{ln}(\bar{y} - b) - (y^\tau(b) - b) \text{ln}(y^\tau(b) - b) - (\bar{y} - y^\tau(b)) \right] \\
+     & + \frac{{(\beta^\tau)}^2}{\bar{y} - \underline{y}} \text{ln}(y_3) (\bar{y} - y^\tau(b)) + \frac{\beta^\tau}{\bar{y} - \underline{y}} \left[y^\tau(b) \text{ln}(\gamma y^\tau(b)) - \underline{y} \text{ln}(\gamma \underline{y}) - (y^\tau(b) - \underline{y}) \right] \\
+     & + \frac{{(\beta^\tau)}^2}{\bar{y} - \underline{y}} \text{ln}(\gamma y_3) (y^\tau(b) - \underline{y})
+\end{align*}
+
+\subsection*{FOC Condition in Case 2}
+
+If $\beta$ is observable the government simply receives the bond price is as follows
+
+$$ q^\tau(b) =\frac{1}{R} \frac{\bar{y} - y^\tau(b)}{\bar{y} - \underline{y}} \rightarrow q^\tau'(b) = \frac{-1}{R} \frac{y^\tau'(b)}{\bar{y} - \underline{y}}
+$$ 
+
+By assuming that the first order condition holds, the optimal $b^\tau$ is given by
+$$
+u' (y_1 + q^\tau(b)b) (q^\tau(b) + bq^\tau'(b)) - \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{y^\tau(b)}^{\bar{y}} u'(y_2 - b)dy_2 = 0
+$$
+
+We know that
+
+$$
+q^\tau(b) + bq^\tau'(b) = \frac{1}{R} \frac{\bar{y} - y^\tau(b)}{\bar{y} - \underline{y}} + \frac{-b}{R} \frac{y^\tau'(b)}{\bar{y} - \underline{y}} = \frac{1}{R} \frac{1}{\bar{y} - \underline{y}} (\bar{y} - y^\tau(b) - b y^\tau'(b))
+$$
+
+By replacing into FOC, we have
+
+$$
+u' (y_1 + q^\tau(b)b) \frac{1}{R} \frac{1}{\bar{y} - \underline{y}} (\bar{y} - y^\tau(b) - b y^\tau'(b)) = \frac{\beta^\tau}{\bar{y} - \underline{y}} \int_{y^\tau(b)}^{\bar{y}} u'(y_2 - b)dy_2
+$$
+
+$$
+\rightarrow u' (y_1 + q^\tau(b)b) \left[\bar{y} - y^\tau(b) - b y^\tau'(b)\right] = \beta^\tau R \int_{y^\tau(b)}^{\bar{y}} u'(y_2 - b)dy_2
+$$
+
+
+
+
+\end{document}

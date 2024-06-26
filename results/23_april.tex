@@ -1,0 +1,612 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 1251
+
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{xcolor}
+% Set custom page margins
+\geometry{left=3cm, right=3cm, top=3cm, bottom=2cm}
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Codepage=1251}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Thursday, April 13, 2023 14:47:29}
+%TCIDATA{LastRevised=Thursday, April 20, 2023 15:42:15}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+%\input{tcilatex}
+\begin{document}
+
+
+\bigskip Two types of governments:\ \textbf{P}rudent and \textbf{E}%
+xtravagant. They differ in their discount factor $\beta ^{P}>\beta ^{E}$. A
+given government is prudent with probability $\pi .$ Governments value
+public good provision in $g_{t}$ in periods $t=1,2,3$ according to an
+objective function
+
+\begin{equation*}
+u\left( g_{1}^{\tau }\right) +\beta ^{\tau }u\left( g_{2}^{\tau }\right) + \left(\beta^{\tau} \right)^2 u\left(g^{\tau}_3\right),
+\end{equation*}%
+
+
+\paragraph{Assumption about the distribution of income in period 2}
+
+We assume that $y_2\sim F$, where $F$ is the CDF of $y_2$, and $f$ is the corresponding pdf.
+
+\paragraph{Assumption about the utility function}
+We assume that the government has a log utility function as follows: $u(y) = \ln(y)$.
+
+\paragraph{Goverment's repayment choice in period 2}
+In general the government's repayment choice in period $2$ boils down to a cut off strategy in which the government repay the debt $b$ iff $y_2\geq y^{\tau}(b)$, where $y^{\tau}(b)$ is implicitly defined by
+\begin{align*}
+u(\gamma y^{\tau}(b)) - u(y^{\tau}(b)-b) = \beta^{\tau} \Psi,
+\end{align*}
+where $\Psi = E[u(y_3)-u(\gamma y_3)]$.
+
+Given the assumption on the utility function, we can explicitly solve for $y^{\tau}(b)$, which is given by
+
+\begin{align*}
+y^{\tau}(b) = \frac{b}{1-\gamma e^{-\beta^{\tau} \Psi}}
+\end{align*}
+
+\paragraph{Bond price}
+A lender wants to charge an interest rate schedule according to government repayment probability. That is, the lenders break even according to their beliefs. And all lenders hold the same beliefs. 
+
+\section{Utility given the default probability}
+
+\paragraph{Danger zone: If they lend, gov sometimes default $\underline{y}<y^{\tau}(b)<\bar{y}$}
+In this scenario, the indifferent government income $y^{\tau}(b)$ is somewhere between $\underline{y}$ and $\bar{y}$. We can calculate the range of borrowing corresponding to this situation. Also the bond price is $q^{\tau}(b)=\frac1R (1-F(y^{\tau}(b)))$, and the government's utility is as follows
+\begin{align*}
+U &=  u(y_1 + q^{\tau}(b)b) + \beta^{\tau}\int_{y^{\tau}(b)}^{\bar{y}} u(y_2-b)f(y_2)dy_2 + \left(\beta^{\tau}\right)^2 u(y_3)(1-F(y^{\tau}(b)))\\
+& + \beta^{\tau}\int_{\underline{y}}^{y^{\tau}(b)} u(\gamma y_2)f(y_2)dy_2 + \left(\beta^{\tau}\right)^2 u(\gamma y_3)F(y^{\tau}(b))
+\end{align*}
+
+
+
+\section{Relationship Between Optimal $b$ and $\beta$ With Triangular Distribution}
+
+I selected the parameters as follows to ensure that the optimal $b$ falls within the danger zone. I assume that the distribution of $y_2$ follows a triangular distribution.
+
+$$y_1 = 1100, \quad y_3 = 1300, \quad R=1.05, \quad \bar{y} = 4800, \quad \underline{y} = 800, \quad y_{mode} = 2800 $$
+
+My results show that even when the optimal $b$ is entirely within the danger zone—not at the boundary kink between the no-default zone and the danger zone—it can either increase or decrease relative to $\beta$, depending on how I choose the penalty parameter $\gamma$. In the following sections, I discuss three cases.
+
+
+\subsection{Heavy market penalty in third period if gov defaults ($\gamma = 0.5$)}
+
+The following figures show the total utility for different $b$ in two extremes: $\beta = 0.95$ and $\beta = 0.5$. It demonstrates that in this range of $\beta$, the optimal $b$ consistently falls within the danger zone.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_05_beta_05 (1).png}
+        \caption{Total utility ($\gamma = 0.5$, $\beta = 0.5$)}
+        \label{fig:gamma05beta05}
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_05_beta_095 (2).png}
+        \caption{Total utility ($\gamma = 0.5$, $\beta = 0.95$)}
+        \label{fig:gamma05beta095}
+    \end{minipage}
+\end{figure}
+
+By holding other initial parameters constant and varying only $\beta$, the following figure shows the optimal $b$ with respect to different values of $\beta$ as follows:
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/optimal_b_gamma_05.png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.5$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+The above result is consistent with the standard intuition that if the government is less patient, the bond price decreases, and the probability of default increases. Consequently, the optimal $b$ for this type of government also increases. 
+
+In the following graph, I display the total utilities for $\beta = 0.6$ and $\beta = 0.9$ simultaneously in a single plot to check if an increase in $\beta$ leads to a decrease in optimal $b$. Noted that I have shifted the blue curve vertically to better illustrate the differences graphically.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=1\textwidth]{pic/u_beta_06_09 (3).png}}
+\caption{Total utility for $\beta = 0.6$ and $\beta = 0.9$ ($\gamma =0.5$). For better graphical illustration, the blue curve is shifted by an amount of 5.07.}
+%\label{fig:Simulation1}
+\end{figure}
+
+
+
+\subsection{Intermediate market penalty in third period if gov defaults ($\gamma = 0.8$)}
+
+
+The following figures show the total utility for different amounts of $b$ in two extremes: $\beta = 0.95$ and $\beta = 0.5$, to demonstrate that the optimal $b$, for this range of $\beta$, consistently falls within the danger zone.
+
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_08_beta_05.png}
+        \caption{Total utility ($\gamma = 0.8$, $\beta = 0.5$)}
+        \label{fig:gamma05beta05}
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_08_beta_095.png}
+        \caption{Total utility ($\gamma = 0.8$, $\beta = 0.95$)}
+        \label{fig:gamma05beta095}
+    \end{minipage}
+\end{figure}
+
+
+The following graph illustrates how optimal $b$ varies across different values of $\beta$. This graph is divided into two regions: 1. very low $\beta$ and 2. very high $\beta$. 
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/optimal_b_gamma_08 (1).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.8$)}
+\label{fig:Simulation11}
+\end{figure}
+
+Note that changes in $\beta$ have two effects: 1) It (clearly) changes the government preference, in particular, its patience. 2) It changes the price at which the government can borrow. The bottom line is that in the very low $\beta$ region the second effect is the dominant force and in the very high $\beta$ region the first one is more important.
+
+In the very low $\beta$ region, the government is not patient enough, so the utility it gains in period 3 is not very important in its decision making. As a result, it is more likely to default: The gain of not repaying the debt in period 2 dominates the loss of utility caused by lower output in period 3 due to default. 
+
+In the very high $\beta$ region, the government is more patient, making period 3 significant. Thus, it is more likely to repay the debt. So in the following discussion:
+$$
+\begin{cases}
+\text{In the very low $\beta$ region $\Rightarrow$ Default drives our intuition} \\
+\text{In the very high $\beta$ region $\Rightarrow$ Standard intertemporal intuition with no default drives our intuition}
+\end{cases}
+$$
+Within the very low $\beta$ region, borrowing increases with $\beta$. Note that an increase in $\beta$ decreases the rate at which government can borrow. Since in the low $\beta$ region the government is quite unlikely to repay its debt, facing a lower rate increases its borrowing.
+
+
+Conversely,  within the very high $\beta$ region, it is more likely that the government will repay its debt, and hence we are back at 2-period standard model intuition. If you are more patient, you will borrow less. 
+
+In summary, in the very low $\beta$ region, the change in the borrowing rate dominates over changes in patience. However, in the very high $\beta$ region, the changes in being patient dominate the changes in the borrowing rate.
+
+In the following graph, I compare the total utility of cases $\beta =0.5$ and $\beta =0.6$ (corresponding to points 1 and 2 in Figure \ref{fig:Simulation1}).
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=1\textwidth]{pic/u_beta_05_06.png}}
+\caption{Total utility for $\beta = 0.5$ and $\beta = 0.6$ ($\gamma =0.8$). For better graphical illustration, the blue curve is shifted by an amount of 1.53.}
+%\label{fig:Simulation1}
+\end{figure}
+
+In the following graph, I compare the total utility of cases $\beta =0.8$ and $\beta =0.9$ (corresponding to points 3 and 4 in Figure \ref{fig:Simulation1}).
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=1\textwidth]{pic/u_beta_08_09.png}}
+\caption{Total utility for $\beta = 0.8$ and $\beta = 0.9$ ($\gamma =0.8$). For better graphical illustration, the blue curve is shifted by an amount of 1.95.}
+%\label{fig:Simulation1}
+\end{figure}
+
+
+\subsection{Low market penalty in third period if gov defaults ($\gamma = 0.9$)}
+
+The following graphs show the total utility for different amounts of $b$ in two extremes: $\beta = 0.95$ and $\beta = 0.5$, to demonstrate that the optimal $b$, for this range of $\beta$, consistently falls within the danger zone.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_09_beta_05.png}
+        \caption{Total utility ($\gamma = 0.9$, $\beta = 0.5$)}
+        \label{fig:gamma05beta05}
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_09_beta_095.png}
+        \caption{Total utility ($\gamma = 0.9$, $\beta = 0.95$)}
+        \label{fig:gamma05beta095}
+    \end{minipage}
+\end{figure}
+
+By holding all other initial parameters constant and varying only $\beta$, the following figure shows the optimal $b$ for 
+different values of $\beta$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/optimal_b_gamma_09.png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.9$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+The above graph demonstrates that as the market offers better prices for a more patient government, and because the pain of default is very low (with gamma close to 1), it is worthwhile for the government to borrow more. If they don't repay in period three, the pain of being excluded from the market is really low.
+
+In the following graph, I display the total utilities for $\beta = 0.6$ and $\beta = 0.9$:
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=1\textwidth]{pic/u_beta_06_09 (4).png}}
+\caption{Total utility for $\beta = 0.6$ and $\beta = 0.9$ ($\gamma =0.9$). For better graphical illustration, the blue curve is shifted by an amount of 5.51.}
+%\label{fig:Simulation1}
+\end{figure}
+
+\section{Relationship Between Optimal $b$ and $\beta$ With Lognormal Distribution}
+
+I selected the following parameters and I assume that the distribution of $y_2$ follows a lognormal distribution.
+
+$$y_1 = 1100, \quad y_3 = 1300, \quad R=1.05, \quad y_{mean} = 2300, \quad \sigma = 10000 $$
+
+My results show that the optimal $b$ can either increase or decrease relative to $\beta$, depending on how I choose the penalty parameter $\gamma$. In the following sections, I discuss three cases.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.55\textwidth]{pic/y2_lognormal (4).png}}
+\caption{Lognormal PDF of $y_2$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\subsection{Heavy market penalty in third period if gov defaults ($\gamma = 0.5$)}
+
+The following figures show the total utility for different $b$ in two extremes: $\beta = 0.95$ and $\beta = 0.5$. 
+
+%It demonstrates that in this range of $\beta$, the optimal $b$ consistently falls within the danger zone.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_05_beta_05_lognormal (11).png}
+        \caption{Total utility ($\gamma = 0.5$, $\beta = 0.5$)}
+        \label{fig:gamma05beta05}
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_05_beta_05_lognormal (12).png}
+        \caption{Total utility ($\gamma = 0.5$, $\beta = 0.95$)}
+        \label{fig:gamma05beta095}
+    \end{minipage}
+\end{figure}
+
+The utility function plots in this section generally show sharper declines compared to those with triangular distributions. This happens because the lognormal distribution used here has a \textbf{fat tail}, meaning the probabilities decrease significantly towards the end. Therefore, in these areas where probabilities are almost zero, the outcomes resemble scenarios where the government defaults frequently.
+
+By holding other initial parameters constant and varying only $\beta$, the following figure shows the optimal $b$ with respect to different values of $\beta$ as follows:
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/optimal_b_gamma_05_lognormal.png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.5$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+The above result is consistent with the standard intuition that if the government is less patient, the bond price decreases, and the probability of default increases. Consequently, the optimal $b$ for this type of government also increases. 
+
+\subsection{Intermediate market penalty in third period if gov defaults ($\gamma = 0.8$)}
+
+The following figures show the total utility for different amounts of $b$ in two extremes: $\beta = 0.95$ and $\beta = 0.5$.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_05_beta_05_lognormal (4).png}
+        \caption{Total utility ($\gamma = 0.8$, $\beta = 0.5$)}
+        \label{fig:gamma05beta05}
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_05_beta_05_lognormal (5).png}
+        \caption{Total utility ($\gamma = 0.8$, $\beta = 0.95$)}
+        \label{fig:gamma05beta095}
+    \end{minipage}
+\end{figure}
+
+The following graph illustrates how optimal $b$ varies across different values of $\beta$. This graph is divided into two regions: 1. very low $\beta$ and 2. very high $\beta$. 
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/optimal_b_y1_lognormal (4).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.8$)}
+\label{fig:Simulation1}
+\end{figure}
+
+The intuition is similar to what I explained for the Figure \ref{fig:Simulation11}.
+
+
+
+\subsection{Low market penalty in third period if gov defaults ($\gamma = 0.9$)}
+
+The following graphs show the total utility for different amounts of $b$ in two extremes: $\beta = 0.95$ and $\beta = 0.5$, to demonstrate that the optimal $b$, for this range of $\beta$, consistently falls within the danger zone.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_05_beta_05_lognormal (10).png}
+        \caption{Total utility ($\gamma = 0.9$, $\beta = 0.5$)}
+        \label{fig:gamma05beta05}
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pic/gamma_05_beta_05_lognormal (8).png}
+        \caption{Total utility ($\gamma = 0.9$, $\beta = 0.95$)}
+        \label{fig:gamma05beta095}
+    \end{minipage}
+\end{figure}
+
+By holding all other initial parameters constant and varying only $\beta$, the following figure shows the optimal $b$ for 
+different values of $\beta$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/optimal_b_gamma_09_lognormal.png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.9$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+The above graph demonstrates that as the market offers better prices for a more patient government, and because default pain is very low (with gamma close to 1), it is worthwhile for the government to borrow more. If they don't repay in period three, the pain of being excluded from the market is really low.
+
+\subsection{The effect of Gov Income in Period 1}
+
+The following figure shows the optimal $b$ over different beta values at 4 different levels of $y_1$. Note that $\gamma = 0.5$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.6\textwidth]{pic/Capture.PNG2.PNG}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.5$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+The following figure shows the optimal $b$ over different beta values at 4 different levels of $y_1$. Note that $\gamma = 0.8$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/y_1.png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.8$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+The following figure shows the optimal $b$ over different beta values at 4 different levels of $y_1$. Note that $\gamma = 0.9$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/y_1 (1).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.9$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+\textbf{Intuition:} When $y_1$ decreases, the gap between income in period 1 and income in period 2 increases. As a result, the government wants to borrow more.
+
+Additionally, the difference in optimal b when the government has very high income and when it has very low income (illustrated by the gap between the green and purple lines) increases as beta rises. The reason is that when the government is more prudent, the future becomes more important, and the government's borrowing becomes more sensitive to the income of period 1.
+
+\subsection{The effect of Gov Income in Period 3}
+
+The following figure shows the optimal $b$ over different beta values at 3 different levels of $y_3$. Note that $\gamma = 0.5$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/y_3 (1).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.5$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+% \textbf{Intuition:} When the cost of default is high, period 3 becomes important, thus debt repayment is more likely. Consequently, the government's borrowing decision in period 1 is independent of $y_3$'s level.
+
+The following figure shows the optimal $b$ over different beta values at 3 different levels of $y_3$. Note that $\gamma = 0.8$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/y_3 (2).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.8$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+The following figure shows the optimal $b$ over different beta values at 3 different levels of $y_3$. Note that $\gamma = 0.9$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/y_3 (3).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.9$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+\textcolor{red}{Vahid:} It seems the income level in period 3 does not affect gov's borrowing decision (or the difference is negligible). \textcolor{red}{(Why?)}
+
+\subsection{The effect of Risk-free Rate (R)}
+
+The following figure shows the optimal $b$ over different beta values at 3 different values of $R$. Note that $\gamma = 0.5$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/R (4).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.5$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+If the risk-free rate increases, then the gov borrows less. The following figure shows the optimal $b$ over different beta values at 3 different values of $R$. Note that $\gamma = 0.8$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/R (5).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.8$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+The following figure shows the optimal $b$ over different beta values at 3 different values of $R$. Note that $\gamma = 0.9$.
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/R (6).png}}
+\caption{Optimal $b$ for different $\beta$ ($\gamma = 0.9$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+When $\beta$ is low, the future is less important; therefore, regardless of the rate, the government will borrow heavily. So, with low $\beta$, the gap between the red and green curves is small.
+
+\subsection{The effect of Gov Income in Period 2}
+
+
+% The following figure shows the optimal $b$ over different beta values at 3 different levels of $y_{mean}$. Note that $\gamma = 0.5$.
+
+% \begin{figure}[H]
+% \centering
+% {\includegraphics[width=0.7\textwidth]{pic/y_mean (1).png}}
+% \caption{Optimal $b$ for different $\beta$ ($\gamma = 0.5$)}
+% %\label{fig:Simulation1}
+% \end{figure}
+
+% The following figure shows the optimal $b$ over different beta values at 3 different levels of $y_{mean}$. Note that $\gamma = 0.8$.
+
+% \begin{figure}[H]
+% \centering
+% {\includegraphics[width=0.7\textwidth]{pic/y_mean (2).png}}
+% \caption{Optimal $b$ for different $\beta$ ($\gamma = 0.8$)}
+% %\label{fig:Simulation1}
+% \end{figure}
+
+% \textcolor{red}{Vahid: Intuition? And graph for $\gamma = 0.9$?}
+
+\newpage
+
+\subsection{$b^*$, $q(b^*)$, and Probability of Default VS. $\beta$}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined (5).png}}
+\caption{$b^*$, $q(b^*)$, and probability of default for different $\beta$ ($\gamma = 0.8$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined (6).png}}
+\caption{$b^*$, $q(b^*)$, and probability of default for different $\beta$ ($\gamma = 0.5$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined (8).png}}
+\caption{$b^*$, $q(b^*)$, and probability of default for different $\beta$ ($\gamma = 0.9$)}
+%\label{fig:Simulation1}
+\end{figure}
+
+\newpage
+\subsection{Total $U$ and $q \times b$ over $b$}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (1).png}}
+\caption{$\gamma = 0.9$, $\beta = 0.95$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (2).png}}
+\caption{$\gamma = 0.9$, $\beta = 0.75$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (3).png}}
+\caption{$\gamma = 0.9$, $\beta = 0.55$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (4).png}}
+\caption{$\gamma = 0.8$, $\beta = 0.95$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (5).png}}
+\caption{$\gamma = 0.8$, $\beta = 0.75$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (6).png}}
+\caption{$\gamma = 0.8$, $\beta = 0.55$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (7).png}}
+\caption{$\gamma = 0.5$, $\beta = 0.95$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (8).png}}
+\caption{$\gamma = 0.5$, $\beta = 0.75$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=0.7\textwidth]{pic/combined_u (9).png}}
+\caption{$\gamma = 0.5$, $\beta = 0.55$}
+%\label{fig:Simulation1}
+\end{figure}
+
+\newpage
+
+\begin{figure}[H]
+\centering
+{\includegraphics[width=1\textwidth]{pic/y2_lognormal_comparison (1).png}}
+%\caption{$\gamma = 0.5$, $\beta = 0.55$}
+%\label{fig:Simulation1}
+\end{figure}
+
+% \section{Rescale The parameters}
+
+% I selected the following parameters and I assume that the distribution of $y_2$ follows a lognormal distribution.
+
+% $$y_1 = 1100, \quad y_3 = 1300, \quad R=1.05, \quad y_{mean} = 2300, \quad \sigma = 10000, \quad \beta = 0.9, \quad \gamma = 0.8 $$
+
+% \begin{figure}[H]
+% \centering
+% {\includegraphics[width=0.7\textwidth]{pic/tot (1).png}}
+% %\caption{$\gamma = 0.5$, $\beta = 0.55$}
+% %\label{fig:Simulation1}
+% \end{figure}
+
+% Then, I rescaled the parameters:
+
+% $$y_1 = 1.1, \quad y_3 = 1.3, \quad R=1.05, \quad y_{mean} = 2.3, \quad \sigma = 10, \quad \beta = 0.9, \quad \gamma = 0.8 $$
+
+
+
+
+\end{document}
